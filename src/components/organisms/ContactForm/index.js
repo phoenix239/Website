@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import emailjs from 'emailjs-com';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
 import { font, palette } from 'styled-theme';
-import { ToastContainer, toast, Zoom } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { resetWarningCache } from 'prop-types/checkPropTypes';
-import { resetState } from 'react-modal/lib/helpers/ariaAppHider';
 import { Paragraph } from 'components';
+import { resetState } from 'react-modal/lib/helpers/ariaAppHider';
+import { resetWarningCache } from 'prop-types/checkPropTypes';
+import { ToastContainer, toast, Zoom } from 'react-toastify';
+import emailjs from 'emailjs-com';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Wrapper = styled.div`
   display: flex;
