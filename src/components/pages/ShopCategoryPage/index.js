@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
 import {
   Paragraph,
@@ -8,6 +8,7 @@ import {
   Dropdown,
   PageTitleFrame,
   Spacer,
+  Icon,
 } from 'components';
 import {
   Earrings,
@@ -87,13 +88,6 @@ const StyledDropdown = styled(Dropdown)`
   }
 `;
 
-const StyledLink = styled(Link)`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-`;
-
 const FreeShippingFlag = styled.div`
   position: relative;
   top: -0.6rem;
@@ -111,6 +105,27 @@ const FreeShippingFlag = styled.div`
   border-bottom-right-radius: 0.5rem;
   border: 1px solid ${palette('grayscale', 6)};
   border-top: 1px solid ${palette('grayscale', 4)};
+`;
+
+const StyledLink = styled(Link)`
+  cursor: pointer;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: ${font('primary')};
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+`;
+
+const StyledIcon = styled(Icon)`
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.4rem;
+  margin-top: -0.3rem;
+  color: ${palette('copper', 1)};
 `;
 
 const ShopCategoryPage = () => {
@@ -192,7 +207,10 @@ const ShopCategoryPage = () => {
     <>
       <PageTitleFrame title={listingsData.label}>
         <NavWrapper>
-          <Link to='/shop'>🞀 Back</Link>
+          <StyledLink to='/shop'>
+            <StyledIcon icon='left_arrow' />
+            Back
+          </StyledLink>
           <StyledDropdown
             onChange={handleSortChange}
             options={SORT_OPTIONS}
@@ -221,7 +239,10 @@ const ShopCategoryPage = () => {
         <Footnote>* Sold listings may be available for custom order</Footnote>
         <Footnote>Contact me for more Information </Footnote>
       </PageTitleFrame>
-      <StyledLink to='/shop'>🞀 Back</StyledLink>
+      <StyledLink to='/shop'>
+        <StyledIcon icon='left_arrow' />
+        Back
+      </StyledLink>
       <Spacer />
     </>
   );

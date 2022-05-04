@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import {
   Paragraph,
@@ -7,6 +7,7 @@ import {
   ShopItemCard,
   PageTitleFrame,
   Spacer,
+  Icon,
 } from 'components';
 import {
   Earrings,
@@ -15,24 +16,36 @@ import {
   Rings,
   Sets,
 } from '../../atoms/JSONListings';
+import { palette } from 'styled-theme';
 
-const LeftParagraphWrapper = styled(Paragraph)`
+const LinkStyle = css`
   display: flex;
   flex-direction: row;
+  align-content: center;
+  align-items: center;
+`;
+
+const LeftStyledLink = styled(Link)`
+  ${LinkStyle}
   justify-content: flex-start;
-  align-content: flex-start;
-  align-items: flex-start;
   width: 100%;
   text-align: left;
-  padding-left: 5rem;
+  padding-left: 4rem;
+  margin-top: 1rem;
   cursor: pointer;
 `;
 
 const StyledLink = styled(Link)`
-  display: flex;
-  flex-direction: row;
+  ${LinkStyle}
   justify-content: center;
   width: 100%;
+`;
+
+const StyledIcon = styled(Icon)`
+  height: 1.1rem;
+  width: 1.1rem;
+  margin-right: 0.4rem;
+  color: ${palette('copper', 1)};
 `;
 
 const getListing = (currentCategory, currentListing) => {
@@ -76,13 +89,16 @@ const ShopListingPage = ({ title }) => {
         title={listing?.title || 'Nope!'}
         subtitle={listing?.subtitle}
       >
-        <LeftParagraphWrapper>
-          <Link to={`/shop/${currentCategory}`}>🞀 Back</Link>
-        </LeftParagraphWrapper>
-
+        <LeftStyledLink to={`/shop/${currentCategory}`}>
+          <StyledIcon icon='left_arrow' />
+          Back
+        </LeftStyledLink>
         <ShopItemCard {...listing} />
       </PageTitleFrame>
-      <StyledLink to={`/shop/${currentCategory}`}>🞀 Back</StyledLink>
+      <StyledLink to={`/shop/${currentCategory}`}>
+        <StyledIcon icon='left_arrow' />
+        Back
+      </StyledLink>
       <Spacer />
     </>
   );

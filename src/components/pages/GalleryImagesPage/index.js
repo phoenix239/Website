@@ -5,11 +5,12 @@ import {
   Spacer,
   HorizontalRule,
   Paragraph,
+  Icon,
 } from 'components';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import categories from '../../../../public/json/Images.json';
 import Modal from '../../molecules/Modal';
-import { palette } from 'styled-theme';
+import { font, palette } from 'styled-theme';
 
 const IMAGE_HEIGHT = '225px';
 const IMAGE_WIDTH = '225px';
@@ -52,13 +53,6 @@ const ModalImageWrapper = styled.img`
   object-fit: cover;
 `;
 
-const StyledLink = styled(Link)`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-`;
-
 const Description = styled.footer`
   display: flex;
   flex-direction: column;
@@ -86,6 +80,36 @@ const NavLink = styled(Link)`
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
+`;
+
+const StyledLink = styled(Link)`
+  cursor: pointer;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: ${font('primary')};
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+`;
+
+const IconStyle = css`
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.4rem;
+  color: ${palette('copper', 1)};
+`;
+
+const StyledIcon = styled(Icon)`
+  ${IconStyle}
+  margin-top: -0.3rem;
+`;
+
+const StyledLeftIcon = styled(Icon)`
+  ${IconStyle}
+  margin-top: -0.15rem;
 `;
 
 // Get current page from url
@@ -130,7 +154,10 @@ const GalleryImagesPage = () => {
     <>
       <PageTitleFrame title={imagesInfo.title}>
         <NavWrapper>
-          <NavLink to='/gallery'>🞀 Back</NavLink>
+          <NavLink to='/gallery'>
+            <StyledLeftIcon icon='left_arrow' />
+            Back
+          </NavLink>
         </NavWrapper>
         <Spacer small />
         <HorizontalRule />
@@ -173,7 +200,10 @@ const GalleryImagesPage = () => {
         </Description>
       </Modal>
       <Spacer small />
-      <StyledLink to='/gallery'>🞀 Back</StyledLink>
+      <StyledLink to='/gallery'>
+        <StyledIcon icon='left_arrow' />
+        Back
+      </StyledLink>
       <Spacer />
     </>
   );
